@@ -664,21 +664,25 @@ int main()
                         {
                         case 1:
                             AS.Find_Uniq_Elems(BS);
+                            BS.Find_Uniq_Elems(AS);
                             std::cout << "Unique elements in first set:\n";
                             system("pause");
                             break;
                         case 2:
                             AI.Find_Uniq_Elems(BI);
+                            BI.Find_Uniq_Elems(AI);
                             std::cout << "Unique elements in first set:\n";
                             system("pause");
                             break;
                         case 3:
                             AF.Find_Uniq_Elems(BF);
+                            BF.Find_Uniq_Elems(AF);
                             std::cout << "Unique elements in first set:\n";
                             system("pause");
                             break;
                         case 4:
                             AP.Find_Uniq_Elems(BP);
+                            BP.Find_Uniq_Elems(AP);
                             std::cout << "Unique elements in first set:\n";
                             system("pause");
                             break;
@@ -697,21 +701,25 @@ int main()
                         switch (Choice)
                         {
                         case 1:
+                            AS.Find_Uniq_Elems(BS);
                             BS.Find_Uniq_Elems(AS);
                             std::cout << "Unique elements in second set:\n";
                             system("pause");
                             break;
                         case 2:
                             AI.Find_Uniq_Elems(AI);
+                            BI.Find_Uniq_Elems(AI);
                             std::cout << "Unique elements in second set:\n";
                             system("pause");
                             break;
                         case 3:
+                            AF.Find_Uniq_Elems(BF);
                             BF.Find_Uniq_Elems(AF);
                             std::cout << "Unique elements in second set:\n";
                             system("pause");
                             break;
                         case 4:
+                            AP.Find_Uniq_Elems(BP);
                             BP.Find_Uniq_Elems(AP);
                             std::cout << "Unique elements in second set:\n";
                             system("pause");
