@@ -161,7 +161,38 @@ public:
 		return f;
 	}
 
+	friend std::ostream& operator << (std::ostream& out, const Set<T>& set)
+	{
+		int size = set.GetSize();
+		if (size == 0)
+		{
+			out << "Empty set";
+			return out;
+		}
+		out << "{";
+		for (int i = 0; i < size - 1; i++)
+		{
+			out << set[i] << ", ";
+		}
+		out << set[size - 1];
+		out << "}";
+		return out;
+	}
 
-
+	bool Find_Uniq_Elems(Set<T>& a) {
+		for (int i = 0; i < size; i++) {
+			if (!(a.Check_Value(data[i]))) {
+				std::cout << data[i] << " ";
+			}
+		}
+		std::cout << std::endl;
+		return true;
+	}
 
 };
+
+std::ostream& operator << (std::ostream& out, const std::pair<int, double>& set)
+{
+	out << "{" << set.first << ";" << set.second << "}";
+	return out;
+}
