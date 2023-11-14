@@ -172,16 +172,6 @@ public:
 		return f;
 	}
 
-	bool Check_Value(T value, T* arr, int size) {
-		bool f = false;
-		for (int i = 0; i < size; i++)
-		{
-			if (arr[i] == value)
-				f = true;
-		}
-		return f;
-	}
-
 	friend std::ostream& operator << (std::ostream& out, const Set<T>& set)
 	{
 		int size = set.GetSize();
@@ -200,14 +190,23 @@ public:
 		return out;
 	}
 
-	bool Find_Uniq_Elems(Set<T>& a) {
+	void Find_Equal_Elems() {
+		Set<T> ResultSet;
+		Set<T> Result;
 		for (int i = 0; i < size; i++) {
-			if (!(a.Check_Value(data[i]))) {
-				std::cout << data[i] << " ";
+			if (ResultSet.Check_Value(data[i]) && !Result.Check_Value(data[i])) {
+				//Acontinue;
+				Result.Add_value(data[i]);
+			}
+			else {
+				ResultSet.Add_value(data[i]);
 			}
 		}
+		for (int i = 0; i < Result.Get_Size(); i++) {
+			std::cout << Result.data[i] << " ";
+		}
 		std::cout << std::endl;
-		return true;
+		//return ResultSet;
 	}
 
 	Set<T> Make_Set() {

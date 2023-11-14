@@ -69,7 +69,7 @@ int main()
         std::cout << "5.Delete a number" << "\n";
         std::cout << "6.Intersection of sets" << "\n";
         std::cout << "7.Check value in set" << "\n";
-        std::cout << "8.Find unique elements" << "\n";
+        std::cout << "8.Find equal elements" << "\n";
         std::cout << "9.Make set" << "\n";
         std::cout << "Esc.Exit" << "\n";
         switch (Choice)
@@ -634,7 +634,7 @@ int main()
             }
             break;
         
-        case 56:std::cout << "Unique elements in: \n";
+        case 56:std::cout << "Equal elements in: \n";
             for (;;) {
                 system("cls");
                 std::cout << "Select a set:" << "\n";
@@ -664,27 +664,23 @@ int main()
                         switch (Choice)
                         {
                         case 1:
-                            AS.Find_Uniq_Elems(BS);
-                            BS.Find_Uniq_Elems(AS);
-                            std::cout << "Unique elements in first set:\n";
+                            AS.Find_Equal_Elems();
+                            std::cout << "Equal elements in first set:\n";
                             system("pause");
                             break;
                         case 2:
-                            AI.Find_Uniq_Elems(BI);
-                            BI.Find_Uniq_Elems(AI);
-                            std::cout << "Unique elements in first set:\n";
+                            AI.Find_Equal_Elems();
+                            std::cout << "Equal elements in first set:\n";
                             system("pause");
                             break;
                         case 3:
-                            AF.Find_Uniq_Elems(BF);
-                            BF.Find_Uniq_Elems(AF);
-                            std::cout << "Unique elements in first set:\n";
+                            AF.Find_Equal_Elems();
+                            std::cout << "Equal elements in first set:\n";
                             system("pause");
                             break;
                         case 4:
-                            AP.Find_Uniq_Elems(BP);
-                            BP.Find_Uniq_Elems(AP);
-                            std::cout << "Unique elements in first set:\n";
+                            AP.Find_Equal_Elems();
+                            std::cout << "Equal elements in first set:\n";
                             system("pause");
                             break;
                         }
@@ -702,27 +698,23 @@ int main()
                         switch (Choice)
                         {
                         case 1:
-                            AS.Find_Uniq_Elems(BS);
-                            BS.Find_Uniq_Elems(AS);
-                            std::cout << "Unique elements in second set:\n";
+                            BS.Find_Equal_Elems();
+                            std::cout << "Equal elements in second set:\n";
                             system("pause");
                             break;
                         case 2:
-                            AI.Find_Uniq_Elems(AI);
-                            BI.Find_Uniq_Elems(AI);
-                            std::cout << "Unique elements in second set:\n";
+                            BI.Find_Equal_Elems();
+                            std::cout << "Equal elements in second set:\n";
                             system("pause");
                             break;
                         case 3:
-                            AF.Find_Uniq_Elems(BF);
-                            BF.Find_Uniq_Elems(AF);
-                            std::cout << "Unique elements in second set:\n";
+                            BF.Find_Equal_Elems();
+                            std::cout << "Equal elements in second set:\n";
                             system("pause");
                             break;
                         case 4:
-                            AP.Find_Uniq_Elems(BP);
-                            BP.Find_Uniq_Elems(AP);
-                            std::cout << "Unique elements in second set:\n";
+                            BP.Find_Equal_Elems();
+                            std::cout << "Equal elements in second set:\n";
                             system("pause");
                             break;
                         }
