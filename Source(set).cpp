@@ -70,6 +70,7 @@ int main()
         std::cout << "6.Intersection of sets" << "\n";
         std::cout << "7.Check value in set" << "\n";
         std::cout << "8.Find unique elements" << "\n";
+        std::cout << "9.Make set" << "\n";
         std::cout << "Esc.Exit" << "\n";
         switch (Choice)
         {
@@ -734,6 +735,80 @@ int main()
                     }
                     break;
                 }
+            }
+        case 57:std::cout << "Make set" << std::endl;//преобразование массива в множество
+            for (;;)
+            {
+                switch (Choice)
+                {
+                    system("cls");
+                    std::cout << "Select a set:" << "\n";
+                    switch (Choice)
+                    {
+                    case 1:std::cout << "1:" << AS << "\n";
+                        std::cout << "2:" << BS << "\n";
+                        break;
+                    case 2:std::cout << "1:" << AI << "\n";
+                        std::cout << "2:" << BI << "\n";
+                        break;
+                    case 3:std::cout << "1:" << AF << "\n";
+                        std::cout << "2:" << BF << "\n";
+                        break;
+                    case 4:std::cout << "1:" << AP << "\n";
+                        std::cout << "2:" << BP << "\n";
+                        break;
+                    }
+                }
+                std::cout << "Esc.Back to main menu" << "\n";
+                Menu = _getch();
+                if (Menu == 27) break;
+                switch (Menu)
+                {
+                case 49:
+                    try {
+                        switch (Choice)
+                        {
+                        case 1:AS = AS.Make_Set();
+                            break;
+                        case 2:AI = AI.Make_Set();
+                            break;
+                        case 3:AF = AF.Make_Set();
+                            break;
+                        case 4:AP = AP.Make_Set();
+                        }
+                    }
+                    catch (const char* err)
+                    {
+                        std::cout << err << "\n";
+                        system("pause");
+                        break;
+                    }
+                    break;
+
+                case 50:
+                    try {
+                        switch (Choice)
+                        {
+                        case 1:BS = BS.Make_Set();
+                            break;
+                        case 2:BI = BI.Make_Set();
+                            break;
+                        case 3:BF = BF.Make_Set();
+                            break;
+                        case 4:BP = BP.Make_Set();
+                        }
+                    }
+                    catch (const char* err)
+                    {
+                        std::cout << err << "\n";
+                        system("pause");
+                        break;
+                    }
+                    break;
+                }
+
+                system("pause");
+                break;
             }
         case 27: //Esc
             break;

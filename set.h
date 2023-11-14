@@ -45,10 +45,10 @@ public:
 	{
 		size = right;
 		data = new T[size];
-		for (size_t i = 0; i < size; i++)
-		{
-			data[i] = rand() % 10;
-		}
+		//for (size_t i = 0; i < size; i++)
+		//{
+		//	data[i] = rand() % 10;
+		//}
 	}
 
 	~Set()
@@ -66,13 +66,15 @@ public:
 		}
 		return *this;
 	}
-
+	int Get_Size() {
+		return size;
+	}
 	void operator+(T number)
 	{
-		for (int i = 0; i < size; i++)
-		{
-			if (data[i] == number) throw "Element already exist!";
-		}
+		//for (int i = 0; i < size; i++)
+		//{
+		//	if (data[i] == number) throw "Element already exist!";
+		//}
 		T* tmp = new T[size + 1];
 		for (int i = 0; i < size; i++) { tmp[i] = data[i]; }
 		tmp[size] = number;
@@ -85,19 +87,19 @@ public:
 	{
 		Set<T> ResultSet = *this;
 		for (int i = 0; i < a.size; i++) {
-			bool flag = true;
-			for (int j = 0; j < size; j++)
-			{
-				if (a.data[i] == data[j])
-				{
-					flag = false;
-					break;
-				}
-			}
-			if (flag == true)
-			{
+			//bool flag = true;
+			//for (int j = 0; j < size; j++)
+			//{
+			//	if (a.data[i] == data[j])
+			//	{
+			//		flag = false;
+			//		break;
+			//	}
+			//}
+			//if (flag)
+			//{
 				ResultSet + a.data[i];
-			}
+			//}
 		}
 		return ResultSet;
 	}
@@ -151,11 +153,30 @@ public:
 		return ResultSet;
 	}
 
+	void Add_value(T value) {
+		T* temp = new T[size + 1];
+		for (int i = 0; i < size; i++) { temp[i] = data[i]; }
+		temp[size] = value;
+		delete[] data;
+		data = temp;
+		size++;
+	}
+
 	bool Check_Value(T value) {
 		bool f = false;
 		for (int i = 0; i < size; i++)
 		{
 			if (data[i] == value)
+				f = true;
+		}
+		return f;
+	}
+
+	bool Check_Value(T value, T* arr, int size) {
+		bool f = false;
+		for (int i = 0; i < size; i++)
+		{
+			if (arr[i] == value)
 				f = true;
 		}
 		return f;
@@ -189,6 +210,15 @@ public:
 		return true;
 	}
 
+	Set<T> Make_Set() {
+		Set<T> ResultSet;
+		for (int i = 0; i < size; i++) {
+			if (!ResultSet.Check_Value(data[i])) {
+				ResultSet.Add_value(data[i]);
+			}
+		}
+		return ResultSet;
+	}
 };
 
 std::ostream& operator << (std::ostream& out, const std::pair<int, double>& set)
