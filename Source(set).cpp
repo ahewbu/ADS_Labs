@@ -877,6 +877,40 @@ int main()
                 system("pause");
                 break;
             }
+
+        case 32: // Пробел
+            for (;;) {
+                system("cls");
+                std::cout << "1.Add value to array" << "\n";
+                std::cout << "2.Remove value from array" << "\n";
+                std::cout << "3.Find repeating elements" << "\n";
+                std::cout << "Esc.Back to main menu\n" << "\n";
+                Print_Arr(arr, size);
+                Menu = _getch();
+                if (Menu == 27) break;
+                switch (Menu) {
+                case 49:
+                    std::cout << "\nEnter the value:";
+                    std::cin >> val;
+                    if (InputControl() == false) break;
+                    Add_El(arr, val, size);
+                    break;
+                case 50:
+                    std::cout << "\nEnter the index:";
+                    std::cin >> in;
+                    if (InputControl() == false) break;
+                    Remove_El(arr, in, size);
+                    break;
+                case 51:
+                    Find_Eq_Elems(arr, size, Res_a, Res_b, s_a, s_b);
+                    s_a = 0, s_b = 0;
+                    Res_a = new int[0];
+                    Res_b = new int[0];
+                    system("pause");
+                    break;
+                }
+            }
+
         case 27: //Esc
             break;
         }
