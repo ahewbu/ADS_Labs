@@ -114,6 +114,14 @@ int main()
     std::pair<int, double> temp;
     int Index;
 
+
+    /* Вплоть до Choice - элементы для работы с массивом*/
+    int* arr = Create_Arr(10);
+    size_t size = 10;
+    int* Res_a = new int[0]; int* Res_b = new int[0];
+    size_t s_a = 0, s_b = 0;
+    int val = 0, in = 0;
+
     for (;;)
     {
         std::cout << "Laboratory work 1. Choose the type of sets to work with:" << "\n";
