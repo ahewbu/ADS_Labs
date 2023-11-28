@@ -17,6 +17,73 @@ bool InputControl()
     return true;
 }
 
+int* Create_Arr(size_t size) { // Функция создания массива
+    int* arr = new int[size];
+    for (int i = 0; i < size; i++) {
+        arr[i] = rand() % 10;
+    }
+    return arr;
+}
+
+bool Check(int* arr, int value, size_t size) { // Проверка существования элемента в массиве
+    bool f = false;
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] == value || (arr[i] == 0 && value == 0))
+            f = true;
+    }
+    return f;
+}
+
+void Print_Arr(int* arr, size_t size) { // Печать массива
+    std::cout << "[";
+    for (size_t i = 0; i < size; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << "]";
+}
+
+void Add_El(int*& arr, int value, size_t& size) { // Добавить элемент в массив
+    int* temp = new int[size + 1];
+    for (size_t i = 0; i < size; i++) { temp[i] = arr[i]; }
+    temp[size] = value;
+    delete[] arr;
+    arr = temp;
+    size++;
+}
+
+void Remove_El(int*& arr, int index, size_t& size) { // Удалить элемент из массива
+    if (index < 0 || index >= size) {
+        std::cout << std::endl << "Element by this index doesn't exist\n";
+    }
+    else {
+        int* temp = new int[size - 1];
+        for (size_t i = 0; i < index; i++) { temp[i] = arr[i]; }
+        for (size_t i = index + 1; i < size; i++) { temp[i - 1] = arr[i]; }
+        delete[] arr;
+        arr = temp;
+        size--;
+    }
+}
+
+void Find_Eq_Elems(int*& arr, size_t& size, int*& ResultSet, int*& Result, size_t& s_a, size_t& s_b) { // Найти все повторяющиеся элементы
+    for (int i = 0; i < size; i++) {
+        if (Check(ResultSet, arr[i], size) && !Check(Result, arr[i], size)) {
+            Add_El(Result, arr[i], s_a);
+        }
+        else {
+            Add_El(ResultSet, arr[i], s_b);
+        }
+    }
+    std::cout << std::endl << "Equal elements: ";
+    for (int i = 0; i < s_a; i++) {
+        std::cout << Result[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+
+
 int main()
 {
     srand(time(NULL));
