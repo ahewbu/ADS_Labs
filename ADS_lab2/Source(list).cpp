@@ -131,7 +131,7 @@ public:
             pop_head();
             return;
         }
-        else if (first->value == last->value && first->value == _val) {
+        else if (first->value == last->value && first->next == last && first->value == _val) {
             pop_head();
             pop_head();
             return;
@@ -140,21 +140,25 @@ public:
             pop_tail();
             return;
         }
-        removeDuplicates(_val);
-        Node* slow = first;
-        Node* fast = first->next;
-        while (fast && fast->value != _val) {
-            fast = fast->next;
-            slow = slow->next;
+        else if (first->value == _val && first->next == last) {
+            pop_head();
+            return;
         }
-        if (!fast) {
+        removeDuplicates(_val);
+        Node* ptr1 = first;
+        Node* ptr2 = first->next;
+        while (ptr2 != NULL && ptr2->value != _val) {
+            ptr2 = ptr2->next;
+            ptr1 = ptr1->next;
+        }
+        if (!ptr2) {
             cout << "This element does not exist" << endl;
             return;
         }
-        slow->next = fast->next;
-        delete fast;
+        ptr1->next = ptr2->next;
+        delete ptr2;
     }
-    void remove_all() {
+    void remove_all() {//for destructor
         if (is_empty()) return;
         while (!is_empty()) {
             pop_head();
@@ -191,7 +195,7 @@ public:
         return str;
     }
 
-    Node* operator[] (const int index) {
+    Node* operator[] (const size_t index) {
         if (is_empty()) return nullptr;
         Node* p = first;
         for (int i = 0; i < index; i++) {
@@ -208,7 +212,7 @@ public:
         return *this;
     }
 
-    friend std::ostream& operator << (std::ostream& out, const List& list)
+    friend ostream& operator << (ostream& out, const List& list)
     {
         Node* p = list.first;
         while (p) {
@@ -228,4 +232,28 @@ void add_or_multiply(List& l1, List& l2) {
     num2 = stoi(str2);
     cout << num1 + num2 << endl;
     cout << num1 * num2 << endl;
+}
+
+int main()
+{
+    srand(time(NULL));
+    List l;
+    List k;
+    l.push_tail(0);
+    l.push_tail(1);
+    l.push_tail(2);
+    k.push_tail(0);
+    k.push_tail(1);
+    k.push_tail(1);
+    //l.push_list_tail(k);
+    //l.push_list_front(k);
+    //l.print();
+    cout << l << endl << k << endl;
+    //l = k;
+    //cout << l << endl << k << endl;
+    add_or_multiply(l, k);
+    if (!l.is_empty()) {//вывод операции доступа по индексу
+        cout << l[0]->value<< endl;
+    }
+    return 0;
 }
