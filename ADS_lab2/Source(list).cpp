@@ -218,3 +218,14 @@ public:
         return out;
     }
 };
+
+void add_or_multiply(List& l1, List& l2) {
+    string str1, str2;
+    int num1 = 0, num2 = 0;
+    str1 = l1.get_number();
+    str2 = l2.get_number();
+    num1 = stoi(str1);
+    num2 = stoi(str2);
+    cout << num1 + num2 << endl;
+    cout << num1 * num2 << endl;
+}
