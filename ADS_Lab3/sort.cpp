@@ -10,7 +10,7 @@ struct Stats {
 };
 
 
-Stats selectionSort(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+Stats selection(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
     Stats stat;
     clock_t start, finish;
@@ -42,7 +42,7 @@ Stats selectionSort(std::vector<int>::iterator begin, std::vector<int>::iterator
     return stat;
 }
 
-Stats shaker_sort(vector<int>::iterator begin, vector<int>::iterator end)
+Stats shaker(vector<int>::iterator begin, vector<int>::iterator end)
 {
     Stats stat;
     clock_t start, finish;
@@ -147,8 +147,8 @@ int main() {
 
     Stats stat1, stat2, stat3;
 
-    v1 = generateSortArray(1000);
-    v2 = generateReverseSortArray(1000);
+    v1 = generateSortArray(100000);
+    v2 = generateReverseSortArray(100000);
 
 
     stat1 = comb(v1.begin(), v1.end());
@@ -156,7 +156,7 @@ int main() {
 
     double avcompare = 0, avcopy = 0;
     for (size_t i = 0; i < 100; ++i) {
-        v3 = generateRandomArray(1000);
+        v3 = generateRandomArray(100000);
         stat3 = comb(v3.begin(), v3.end());
         avcompare += stat3.compare_count;
         avcopy += stat3.copy_count;
@@ -174,6 +174,7 @@ int main() {
     cout << "Number of copies for random array: " << stat3.copy_count << endl;
     cout << "Number of compares for random array: " << stat3.compare_count << endl;
 
+    
 
 
     return 0;
