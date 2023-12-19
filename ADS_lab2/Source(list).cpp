@@ -237,23 +237,31 @@ void add_or_multiply(List& l1, List& l2) {
 int main()
 {
     srand(time(NULL));
-    List l;
+    
+    List l(2);
+    List k(3);
+
+    cout << l << endl << k << endl;
+
+    add_or_multiply(l, k);
+
+    /*List l;
     List k;
     l.push_tail(0);
     l.push_tail(1);
     l.push_tail(2);
     k.push_tail(0);
     k.push_tail(1);
-    k.push_tail(1);
+    k.push_tail(1);*/
     //l.push_list_tail(k);
     //l.push_list_front(k);
     //l.print();
-    cout << l << endl << k << endl;
+    
     //l = k;
     //cout << l << endl << k << endl;
-    add_or_multiply(l, k);
-    if (!l.is_empty()) {//вывод операции доступа по индексу
-        cout << l[0]->value<< endl;
-    }
-    return 0;
+    
+    //if (!l.is_empty()) {//вывод операции доступа по индексу
+    //    cout << l[0]->value<< endl;
+    //}
+    //return 0;
 }
