@@ -66,21 +66,25 @@ void Remove_El(int*& arr, int index, size_t& size) { // Удалить элемент из масси
     }
 }
 
-void Find_Eq_Elems(int*& arr, size_t& size, int*& ResultSet, int*& Result, size_t& s_a, size_t& s_b) { // Найти все повторяющиеся элементы
-    for (int i = 0; i < size; i++) {
-        if (Check(ResultSet, arr[i], size) && !Check(Result, arr[i], size)) {
-            Add_El(Result, arr[i], s_a);
+template<class T>
+void Find_Eq_Elems(Set<T> arr) { // Найти все повторяющиеся элементы
+    Set<T> Result;
+    Set<T> ResultSet;
+    for (int i = 0; i < arr.Get_Size(); i++) {
+        if (ResultSet.Check_Value(arr[i]) && !Result.Check_Value(arr[i])) {
+            Result.Add_value(arr[i]);
         }
         else {
-            Add_El(ResultSet, arr[i], s_b);
+            ResultSet.Add_value(arr[i]);
         }
     }
     std::cout << std::endl << "Equal elements: ";
-    for (int i = 0; i < s_a; i++) {
+    for (int i = 0; i < Result.Get_Size(); i++) {
         std::cout << Result[i] << " ";
     }
     std::cout << std::endl;
 }
+
 
 
 
@@ -877,40 +881,80 @@ int main()
                 system("pause");
                 break;
             }
-
-        case 32: // Пробел
-            for (;;) {
-                system("cls");
-                std::cout << "1.Add value to array" << "\n";
-                std::cout << "2.Remove value from array" << "\n";
-                std::cout << "3.Find repeating elements" << "\n";
-                std::cout << "Esc.Back to main menu\n" << "\n";
-                Print_Arr(arr, size);
+        case 32:
+            for (;;)
+            {
+                switch (Choice)
+                {
+                    system("cls");
+                    std::cout << "Select a set:" << "\n";
+                    switch (Choice)
+                    {
+                    case 1:std::cout << "1:" << AS << "\n";
+                        std::cout << "2:" << BS << "\n";
+                        break;
+                    case 2:std::cout << "1:" << AI << "\n";
+                        std::cout << "2:" << BI << "\n";
+                        break;
+                    case 3:std::cout << "1:" << AF << "\n";
+                        std::cout << "2:" << BF << "\n";
+                        break;
+                    case 4:std::cout << "1:" << AP << "\n";
+                        std::cout << "2:" << BP << "\n";
+                        break;
+                    }
+                }
+                std::cout << "Esc.Back to main menu" << "\n";
                 Menu = _getch();
                 if (Menu == 27) break;
-                switch (Menu) {
+                switch (Menu)
+                {
                 case 49:
-                    std::cout << "\nEnter the value:";
-                    std::cin >> val;
-                    if (InputControl() == false) break;
-                    Add_El(arr, val, size);
+                    try {
+                        switch (Choice)
+                        {
+                        case 1:Find_Eq_Elems(AS);
+                            break;
+                        case 2:Find_Eq_Elems(AI);
+                            break;
+                        case 3:Find_Eq_Elems(AF);
+                            break;
+                        case 4:Find_Eq_Elems(AP);
+                        }
+                    }
+                    catch (const char* err)
+                    {
+                        std::cout << err << "\n";
+                        system("pause");
+                        break;
+                    }
                     break;
+
                 case 50:
-                    std::cout << "\nEnter the index:";
-                    std::cin >> in;
-                    if (InputControl() == false) break;
-                    Remove_El(arr, in, size);
-                    break;
-                case 51:
-                    Find_Eq_Elems(arr, size, Res_a, Res_b, s_a, s_b);
-                    s_a = 0, s_b = 0;
-                    Res_a = new int[0];
-                    Res_b = new int[0];
-                    system("pause");
+                    try {
+                        switch (Choice)
+                        {
+                        case 1:Find_Eq_Elems(BS);
+                            break;
+                        case 2:Find_Eq_Elems(BI);
+                            break;
+                        case 3:Find_Eq_Elems(BF);
+                            break;
+                        case 4:Find_Eq_Elems(BP);
+                        }
+                    }
+                    catch (const char* err)
+                    {
+                        std::cout << err << "\n";
+                        system("pause");
+                        break;
+                    }
                     break;
                 }
-            }
 
+                system("pause");
+                break;
+            }
         case 27: //Esc
             break;
         }
